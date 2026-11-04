@@ -1,0 +1,6 @@
+# Attach to an already running WIT driver. Does not control its serial device.
+primitive:
+  - name: wit_imu
+    path: ./primitives/primitive-wit-imu-rbnx
+    config:
+      manage_driver: false

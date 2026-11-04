@@ -1,0 +1,8 @@
+[contract]
+id = "robonix/primitive/imu/barometric_altitude"
+version = "1"
+kind = "primitive"
+idl = "common_interfaces/std_msgs/msg/Float64.msg"
+description = "WIT sensor-reported barometric altitude in metres. Reference datum is unspecified; not GNSS ellipsoid height or map z. No timestamp is carried."
+[mode]
+type = "topic_out"

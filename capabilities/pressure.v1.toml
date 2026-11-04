@@ -1,0 +1,8 @@
+[contract]
+id = "robonix/primitive/imu/pressure"
+version = "1"
+kind = "primitive"
+idl = "common_interfaces/sensor_msgs/msg/FluidPressure.msg"
+description = "Absolute barometric pressure in pascals, when emitted by the WIT sensor. Variance is unknown."
+[mode]
+type = "topic_out"

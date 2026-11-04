@@ -1,0 +1,8 @@
+[contract]
+id = "robonix/primitive/imu/magnetic_raw"
+version = "1"
+kind = "primitive"
+idl = "common_interfaces/geometry_msgs/msg/Vector3Stamped.msg"
+description = "Raw WIT three-axis magnetic counts in sensor LSB, not tesla. No model-specific scale or magnetic calibration is assumed."
+[mode]
+type = "topic_out"

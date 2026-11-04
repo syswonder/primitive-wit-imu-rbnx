@@ -1,0 +1,24 @@
+manifestVersion: 1
+package:
+  name: robonix.primitive.wit.imu
+  version: 0.1.0
+  description: Portable WIT serial IMU primitive with optional magnetic and barometric telemetry.
+  license: MulanPSL-2.0
+  tags: [primitive, imu, wit, serial]
+build: bash scripts/build.sh
+start: bash scripts/start.sh
+capabilities:
+  - name: robonix/primitive/imu/imu
+    transport: ros2
+  - name: robonix/primitive/imu/magnetic_raw
+    transport: ros2
+    path: capabilities/magnetic_raw.v1.toml
+  - name: robonix/primitive/imu/pressure
+    transport: ros2
+    path: capabilities/pressure.v1.toml
+  - name: robonix/primitive/imu/barometric_altitude
+    transport: ros2
+    path: capabilities/barometric_altitude.v1.toml
+  - name: robonix/primitive/imu/status
+    transport: ros2
+    path: capabilities/status.v1.toml

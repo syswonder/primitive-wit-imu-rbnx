@@ -1,0 +1,9 @@
+# Merge into an existing deployment. Adjust package path and stable device path.
+primitive:
+  - name: wit_imu
+    path: ./primitives/primitive-wit-imu-rbnx
+    config:
+      serial:
+        port: /dev/serial/by-id/YOUR_WIT_DEVICE
+        baud: 9600
+      frame_id: wit_10axis_link

@@ -1,0 +1,8 @@
+[contract]
+id = "robonix/primitive/imu/status"
+version = "1"
+kind = "primitive"
+idl = "common_interfaces/std_msgs/msg/String.msg"
+description = "WIT serial health and measurement freshness as JSON in String.data. Package-local schema defined in CONTRACTS.md."
+[mode]
+type = "topic_out"
