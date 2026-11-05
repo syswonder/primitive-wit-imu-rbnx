@@ -15,3 +15,4 @@
 #   barometric_altitude: /wit_10axis/barometric_altitude
 #   status: /wit_10axis/status
 # External mode rejects serial/frame overrides. Restart provider to change topic endpoints.
+# topics.angular_velocity: absolute ROS name, default /wit_10axis/angular_velocity.

@@ -2,3 +2,7 @@ rbnx-build/
 logs/
 __pycache__/
 .pytest_cache/
+
+/logs/
+
+/core.*

@@ -106,3 +106,8 @@ tests/integration.py 使用独立 Atlas 验证生命周期与发现端点；默�
 五种数据的单位、话题重映射、再次激活、无数据时失败及资源清理。
 运行集成测试前 source ROS 并将 robonix-api、本包加入 PYTHONPATH。
 测试文件不是构建或启动依赖；发布时可按需要省略，同时调整文档中的测试说明。
+
+定位接入扩展：新增 `robonix/primitive/imu/angular_velocity`，默认 `/wit_10axis/angular_velocity`，Vector3Stamped（rad/s）。
+直接随有效 0x52 帧发布，不依赖姿态帧；原 Imu 联合消息发布方式不变，见 CONTRACTS.md。
+
+当前验证用框架仍采用命名空间 Driver；`package_manifest.namespace-driver.yaml` 提供兼容选择，主 manifest 保持原共享生命周期声明方式。部署只能选择一种，不并列声明两种 Driver。

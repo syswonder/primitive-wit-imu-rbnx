@@ -28,6 +28,7 @@ class WitImuNode(Node):
         self.vid = int(self.get_parameter("vendor_id").value)
         self.pid = int(self.get_parameter("product_id").value)
         self.imu_pub = self.create_publisher(Imu, "/wit_10axis/data", 10)
+        self.gyro_pub = self.create_publisher(Vector3Stamped, "/wit_10axis/angular_velocity", 10)
         self.mag_pub = self.create_publisher(Vector3Stamped, "/wit_10axis/magnetic_raw", 10)
         self.pressure_pub = self.create_publisher(FluidPressure, "/wit_10axis/pressure", 10)
         self.altitude_pub = self.create_publisher(Float64, "/wit_10axis/barometric_altitude", 10)
@@ -104,6 +105,11 @@ class WitImuNode(Node):
             elif label == "angular_velocity_radps":
                 self.gyro = value
                 self.gyro_at = time.monotonic()
+                msg = Vector3Stamped()
+                msg.header.stamp = self.get_clock().now().to_msg()
+                msg.header.frame_id = self.frame_id
+                msg.vector.x, msg.vector.y, msg.vector.z = map(float, value)
+                self.gyro_pub.publish(msg)
             elif label == "rpy_rad" and self.accel is not None and self.gyro is not None:
                 if time.monotonic()-min(self.accel_at,self.gyro_at) < .25:
                     self.publish_imu(value)
@@ -145,7 +151,7 @@ class WitImuNode(Node):
         self.status_pub.publish(String(data=json.dumps(dict(
             serial_connected=self.port is not None, port=self.port.port if self.port else self.port_name,
             baud=self.baud, frame_id=self.frame_id, timestamp_source='HOST_SERIAL_RECEIVE',
-            imu_age_s=age(self.last_imu_at), magnetic_age_s=age(self.last_mag_at), pressure_age_s=age(self.last_pressure_at),
+            imu_age_s=age(self.last_imu_at), gyro_age_s=age(self.gyro_at), magnetic_age_s=age(self.last_mag_at), pressure_age_s=age(self.last_pressure_at),
             valid=bool(self.last_imu_at and now-self.last_imu_at < .5),
             counts=self.total, checksum_errors=self.parser.bad_checksum,
             orientation_reference='SENSOR_INTERNAL_UNALIGNED', geographic_heading_valid=False,

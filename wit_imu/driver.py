@@ -12,6 +12,7 @@ import yaml
 
 TOPICS = {
     "imu": "/wit_10axis/data",
+    "angular_velocity": "/wit_10axis/angular_velocity",
     "magnetic_raw": "/wit_10axis/magnetic_raw",
     "pressure": "/wit_10axis/pressure",
     "barometric_altitude": "/wit_10axis/barometric_altitude",

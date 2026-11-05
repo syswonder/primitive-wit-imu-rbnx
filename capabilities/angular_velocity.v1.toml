@@ -1,0 +1,9 @@
+[contract]
+id = "robonix/primitive/imu/angular_velocity"
+version = "1"
+kind = "primitive"
+idl = "common_interfaces/geometry_msgs/msg/Vector3Stamped.msg"
+description = "Measured gyro in rad/s, separately fresh from absolute attitude"
+
+[mode]
+type = "topic_out"

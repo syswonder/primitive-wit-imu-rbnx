@@ -48,3 +48,10 @@ status 的 String.data 为 JSON 对象，约定下列字段；允许将来增加
 
 消费者分别检查话题接收超时、相关数据龄期和有效性；串口打开不等于有有效测量，
 valid 也不保证磁场、气压或航向有效。上游标准化需独立协商，这些扩展暂不改全局约定。
+
+## 本地扩展：独立角速度
+
+新增 `robonix/primitive/imu/angular_velocity`，Vector3Stamped，默认 `/wit_10axis/angular_velocity`。
+在每个有效 0x52 gyro 帧发布 rad/s，header 为该帧主机接收时刻、frame 为配置的传感器坐标系。
+原 Imu 消息的姿态/加速度/角速度联合发布规则不变；姿态帧丢失时，此独立 gyro 流仍可供定位/停车反馈使用。
+status 新增 `gyro_age_s`，可单独判断 gyro 新鲜度。该流不是地理航向，不包含安装旋转或地图变换。

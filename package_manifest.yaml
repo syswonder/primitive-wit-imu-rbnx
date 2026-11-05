@@ -22,3 +22,6 @@ capabilities:
   - name: robonix/primitive/imu/status
     transport: ros2
     path: capabilities/status.v1.toml
+  - name: robonix/primitive/imu/angular_velocity
+    transport: ros2
+    path: capabilities/angular_velocity.v1.toml
